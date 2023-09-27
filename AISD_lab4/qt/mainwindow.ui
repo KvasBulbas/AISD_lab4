@@ -14,11 +14,72 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout"/>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGraphicsView" name="graphicsView"/>
     </item>
-    <item row="3" column="0">
+    <item>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="2">
+       <widget class="QPushButton" name="decodeButton">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>88</width>
+          <height>29</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>decode</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="button_deleteNode">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>88</width>
+          <height>29</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>clearTree</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="button_addNode">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>80</width>
+          <height>29</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>build and encode</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="label">
@@ -34,7 +95,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="nodeKey">
+       <widget class="QLineEdit" name="stringEdit">
         <property name="maximumSize">
          <size>
           <width>5000</width>
@@ -48,36 +109,17 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="0">
-     <widget class="QGraphicsView" name="graphicsView"/>
-    </item>
-    <item row="2" column="0">
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="2" column="0">
-       <widget class="QPushButton" name="button_addNode">
-        <property name="maximumSize">
-         <size>
-          <width>80</width>
-          <height>29</height>
-         </size>
-        </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>createTree</string>
+         <string>Code:</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QPushButton" name="button_deleteNode">
-        <property name="maximumSize">
-         <size>
-          <width>88</width>
-          <height>29</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>clearTree</string>
-        </property>
-       </widget>
+      <item>
+       <widget class="QLineEdit" name="codeEdit"/>
       </item>
      </layout>
     </item>

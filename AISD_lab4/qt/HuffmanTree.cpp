@@ -76,7 +76,8 @@ void HuffmanTree::clear(Node* nd)
 
 void HuffmanTree::build(std::string strIn)
 {
-    //clear(_root);
+    if(_root)
+        clear(_root);
 	int TAB[256];
 	for (int i = 0; i < 256; i++)
 		TAB[i] = 0;

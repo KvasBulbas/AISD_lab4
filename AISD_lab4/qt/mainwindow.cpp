@@ -18,16 +18,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->nodeKey->setText("ehal greka cerez reku");
+    ui->stringEdit->setText("ehal greka cerez reku");
 
     ui->button_deleteNode->setEnabled(false);
-
+    ui->decodeButton->setEnabled(false);
     ui->graphicsView->setScene(m_scene);
 
 
     QObject::connect(ui->button_addNode, &QPushButton::clicked, this, &MainWindow::on_clicked_addNode);
     QObject::connect(ui->button_deleteNode, &QPushButton::clicked, this, &MainWindow::on_clicked_deleteNode);
-
+    QObject::connect(ui->decodeButton, &QPushButton::clicked, this, &MainWindow::on_clicked_decode);
 
 }
 
@@ -38,14 +38,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_clicked_addNode()
 {
+    QString str = ui->stringEdit->text();
+    if(str != "")
+    {
 
-    QString str = ui->nodeKey->text();
 
-    tree.build(str.toStdString());
-     ui->button_addNode->setEnabled(false);
-     ui->button_deleteNode->setEnabled(true);
-     onTreeUpdate();
-
+        std::string code;
+        tree.encode(str.toStdString(),code);
+        ui->codeEdit->setText(QString::fromStdString(code));
+        ui->stringEdit->setText("");
+        ui->button_deleteNode->setEnabled(true);
+        ui->decodeButton->setEnabled(true);
+        onTreeUpdate();
+    }
+    else
+        displayError("line of sring is empty");
 
 }
 
@@ -55,11 +62,25 @@ void MainWindow::on_clicked_deleteNode()
 
     tree.clear();
     ui->button_deleteNode->setEnabled(false);
+    ui->decodeButton->setEnabled(false);
     ui->button_addNode->setEnabled(true);
     m_scene->clear();
 
 }
 
+
+void MainWindow::on_clicked_decode()
+{
+    QString code = ui->codeEdit->text();
+    if(code != "")
+    {
+        std::string str;
+        tree.decode(code.toStdString(),str);
+        ui->stringEdit->setText(QString::fromStdString(str));
+    }
+    else
+        displayError("line of code is empty");
+}
 
 
 void MainWindow::onTreeUpdate()
@@ -97,7 +118,7 @@ void MainWindow::printEllipse(Node* nd, int posX, int posY)
     sceneNode->setBackgroundColor(Qt::green);
 
 
-;
+
 
     m_scene->addItem(sceneNode);
 

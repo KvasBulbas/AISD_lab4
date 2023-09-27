@@ -27,9 +27,8 @@ public:
 private slots:
     void on_clicked_addNode();
     void on_clicked_deleteNode();
-    void on_clicked_searchNode();
     void onTreeUpdate();
-    void onLvNodeListCurrentRowChanged(int currentRow);
+    void on_clicked_decode();
 
 private:
     int nodeRadius = 40;
